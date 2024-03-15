@@ -1,0 +1,53 @@
+data_path: /home/peter/data/coco_2017
+output_path: /home/peter/PycharmProjects/yolo-v3/output
+logs_path: /home/peter/PycharmProjects/yolo-v3/logs
+name: "test"
+batch_size: 64
+subdivisions: 1
+num_workers: 8
+epochs: 100
+steps: 150001
+device: "cuda:0"
+train_ratio: 1.0
+val_ratio: 0.2
+metric_ratio: 0.2
+visualize_ratio: 0.01
+learning_rate: 0.0001
+weight_decay: 0.0001
+unfreeze_step: 0
+continue_training: False
+checkpoint: "/home/peter/PycharmProjects/yolo-v3/logs/240224-21:17:13_LambdaLR"
+epoch_num: 0
+visualization_threshold: 0.5
+confidence_threshold: 0.01  # Training done on 0.01 for faster validation
+iou_threshold: 0.45
+evaluate_frequency: 5000
+resize_frequency: 0
+train_img_size: 416
+val_img_size: 416
+num_classes: 91
+ignore_threshold: 0.7
+scheduler:
+  strategy: CosineAnnealingWarmRestartsWithWarmup  # LambdaLR, CosineAnnealingWarmRestartsWithWarmup
+  warmup: 1000
+  T_0: 10000
+  index: [75000, 100000, 125000, 500000]
+  scale: [1.0, 0.5, 0.1, 0.05]
+yolo:
+  pretrained: True
+  num_classes: 91
+  encoder: darknet  # darknet, mobilenet_v3_small, mobilenet_v3_large
+  darknet_params:
+    config_path: "models/config/darknet.cfg"
+    weights_path: "models/weights/darknet53.conv.74"
+anchors: [[[116, 90], [156, 198], [373, 326]], [[30, 61], [62, 45], [59, 119]], [[10, 13], [16, 30], [33, 23]]]
+classes: ['none', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat',
+          'traffic light', 'fire hydrant', 'none', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog',
+          'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'none', 'backpack', 'umbrella', 'none',
+          'none', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite',
+          'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'none',
+          'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange',
+          'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed',
+          'none', 'dining table', 'none', 'none', 'toilet', 'none', 'tv', 'laptop', 'mouse', 'remote', 'keyboard',
+          'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'none', 'book', 'clock', 'vase',
+          'scissors', 'teddy bear', 'hair drier', 'toothbrush', 'none']
