@@ -20,7 +20,9 @@ pip install pip --upgrade
 pip install -r requirements.txt
 ```
 
-Download Darknet pretrained weights (darknet53.conv.74)
+Download Darknet pretrained weights (darknet53.conv.74)  
+Note: Original link might have been deleted or changed, use google-drive link as workaround:  
+https://drive.google.com/file/d/1lWxgwHnpcXOZa18dK0WRLoUc8ooYSY9Y/view?usp=drive_link
 ```
 yolo-v3/models/weights/download_darknet_weights.sh
 ```
